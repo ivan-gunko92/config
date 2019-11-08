@@ -1,0 +1,26 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"42 Headers",
+		"All Autocomplete",
+		"AutoPEP8",
+		"C Improved",
+		"CMakeEditor",
+		"CMakeSnippets",
+		"Dockerfile Syntax Highlighting",
+		"Ghost Snippets",
+		"Harper Color Scheme",
+		"Makefile Improved",
+		"MultipleSelectionScroller",
+		"Notes",
+		"Package Control",
+		"Protobuf Syntax Hightlighting",
+		"Python 3",
+		"SideBarEnhancements",
+		"Theme - Rainbow"
+	]
+}
