@@ -12,6 +12,11 @@ source "${SCRIPT_PATH}"/z/z.sh
 for f in "${SCRIPT_PATH}"/bashrc.d/*; do source $f; done
 eval $(thefuck --alias)
 
-export my="${SCRIPT_PATH}"
+export my="${SCRIPT_PATH}"/..
+export config="${SCRIPT_PATH}"
+export repo="${my}"/repo
+export data="${my}"/data
+export music="${data}"/music
+export PASSWORD_STORE_DIR="${my}"/pass
 
 echo Lol

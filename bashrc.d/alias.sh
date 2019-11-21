@@ -1,12 +1,14 @@
 alias v=vim
 alias j=jobs
 alias f=fuck
+alias last='echo $?'
 alias l="/bin/ls --color --group-directories-first -lh --time-style=long-iso -A -og"
 alias ll="/bin/ls --color --group-directories-first -lh --time-style=long-iso -a"
 alias ls="/bin/ls --color --group-directories-first" 
 alias la="/bin/ls --color --group-directories-first -A" 
-alias edir="mkdir -p"
-function gdir() { mkdir -p "$1" && cd "$1" ; }
+
+function dir() { mkdir -p "$1" && cd "$1" ; }
+alias clear-dir='rm -rf ./*' 
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -15,27 +17,27 @@ alias .....="cd ../../../.."
 alias d-run='docker run -it --rm'
 alias d-run-bash='docker run -it --rm --entrypoint=/bin/bash'
 alias d-im='docker images |grep'
+d-ps () {
+	docker ps --format '{docker_pretty_ps () {{.Names}}\n\tContainer ID:\t{{.ID}}\n\tImage: \t{{.Image}}\n\tCommand: \t{{.Command}}\n\tCreated: \t{{.CreatedAt}}\n\tStatus: \t{{.Status}}\n\tPorts: \t{{.Ports}}\n\n' | awk '{ if ( $0 ~ /^[a-zA-Z]/ ) printf "%c[1;"(((NR-1)%5)+31)"m"$0"\n", 27; else printf "%c[1;0m"$0"\n", 27; }'
+}
 
-alias psa='ps -aux | grep'
-alias en='env | grep'
-alias clear-dir='rm -rf ./*' 
+alias psa='ps -aux |grep'
+alias en='env |grep'
 alias r-bash='source ~/.bashrc'
 alias r-tmux='tmux source-file ~/.tmux.conf'
-alias is-ok='echo $?'
 
-print_dir_sizes () {
+pr-dir-sizes () {
     for D in `find . -maxdepth 1 -type d`
     do
      du -hs "${D}"
     done
 }
-alias dirsizes='print_dir_sizes'
-docker-pretty-ps () {
-	docker ps --format '{docker_pretty_ps () {{.Names}}\n\tContainer ID:\t{{.ID}}\n\tImage: \t{{.Image}}\n\tCommand: \t{{.Command}}\n\tCreated: \t{{.CreatedAt}}\n\tStatus: \t{{.Status}}\n\tPorts: \t{{.Ports}}\n\n' | awk '{ if ( $0 ~ /^[a-zA-Z]/ ) printf "%c[1;"(((NR-1)%5)+31)"m"$0"\n", 27; else printf "%c[1;0m"$0"\n", 27; }'
+pr-port () {
+  sudo netstat -tulpn | grep "$1"
+  sudo lsof -i:"$1"
 }
-alias d-ps='docker_pretty_ps'
-alias show-mem='ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head'
-alias show-cpu='ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head'
+alias pr-mem='ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head'
+alias pr-cpu='ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head'
 
 alias aptupdate='sudo apt-get update'
 alias aptupgrade='sudo apt-get update ; sudo apt-get upgrade'
@@ -46,11 +48,11 @@ alias aptpurge='sudo apt-get purge '
 alias aptautoremove='sudo apt-get autoremove'
 
 # Поиск файла по шаблону:
-function ff() { find . -type f -iname '*'$*'*' -ls ; }
+function search-file() { find . -type f -iname '*'$*'*' -ls ; }
 # Поиск файла по шаблону в $1 и запуск команды в $2 с ним:
-function fe() { find . -type f -iname '*'$1'*' -exec "${2:-file}" {} \;  ; }
+function search-file-exec() { find . -type f -iname '*'$1'*' -exec "${2:-file}" {} \;  ; }
 # поиск строки по файлам:
-function fstr()
+function search-file-str()
 {
     OPTIND=1
     local case=""
