@@ -1,6 +1,8 @@
 kakoune
-ranger, ack, autojump, rofi or dmenu
-fzf
+ranger
+autojump
+rofi
+dmenu
 fpm vs. upt
 shellcheck
 mutt
