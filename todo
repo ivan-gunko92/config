@@ -1,10 +1,11 @@
 kakoune
-ranger
-autojump
-rofi
 dmenu
+rofi
+fastd
+https://blog.patshead.com/2011/05/my-take-on-the-go-command.html
 fpm vs. upt
 shellcheck
 mutt
 https://cookiecutter.readthedocs.io/en/latest/usage.html
 https://github.com/passff/passff#multi-line-format
+ranger
