@@ -1,2 +1,2 @@
 export ERL_AFLAGS="-kernel shell_history enabled"
-export EDITOR=vim
+export EDITOR=kak
