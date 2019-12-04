@@ -2,6 +2,7 @@
 set -eu -o pipefail
 set -f
 readonly DIR=$(dirname "$0")
+cd "${DIR}"
 #END
 CHECKOUT="v2019.07.01"
 sudo apt install libncursesw5-dev pkg-config
