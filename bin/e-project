@@ -1,0 +1,16 @@
+#!/bin/bash
+set -eu -o pipefail
+set -f
+#END
+
+server_name=$(basename `pwd`)
+socket_file=$(kak -l | grep $server_name) || true
+
+if [[ $socket_file == "" ]]; then        
+    echo "Create new kakoune daemon for current dir"
+    kak -d -s $server_name
+fi
+
+# and run kakoune (with any arguments passed to the script)
+kak -c $server_name $@
+

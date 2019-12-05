@@ -1,0 +1,26 @@
+#!/bin/bash
+set -eu -o pipefail
+set -f
+#END
+
+known_error() {
+    echo "$1"
+    exit 133
+}
+
+readonly bash_file="$1"
+readonly bash_file_dir=$(dirname "${bash_file}")
+echo "Creating \`${bash_file}\` ..."
+test -d "${bash_file_dir}" || known_error "Directory not exist ${bash_file_dir}!"
+test -f "${bash_file}" && known_error "File already exist!"
+cat > "${bash_file}" << EOS
+#!/bin/bash
+set -eu -o pipefail
+set -f
+readonly DIR=\$(dirname \"\$0\")
+cd \"\${DIR}\"
+#END
+EOS
+sudo chmod +rx "${bash_file}"
+$EDITOR "${bash_file}"
+
