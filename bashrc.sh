@@ -17,6 +17,7 @@ export config="${SCRIPT_PATH}"
 export repo="${my}"/repo
 export data="${my}"/data
 export music="${data}"/music
+export tips="${my}"/tips
 export PASSWORD_STORE_DIR="${my}"/pass
 PATH="${PATH}:${config}/bin"
 
