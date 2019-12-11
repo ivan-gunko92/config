@@ -28,6 +28,7 @@ sudo apt install -yq \
 	xclip \
 	tree \
 	erlang-diameter erlang erlang-manpages erlang-doc erlang-tools \
+	rlwrap \
 	leiningen \
 	tmux \
 	build-essential \
