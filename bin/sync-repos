@@ -1,19 +1,29 @@
 #!/bin/bash
-set -eu -o pipefail
+set -e -o pipefail
 set -f
 #END
 
+RESTORE_COLOUR='\033[0m'
+RED='\033[00;31m'
+GREEN='\033[00;32m'
+YELLOW='\033[00;33m'
+
 known_error() {
-    echo "$1"
+    echo -e "${RED}$1"
     exit 133
+}
+
+msg() {
+    echo "$@" 1>&2
 }
 
 sync_in_folder() {
   local  dir="$1"
-  echo "Sync in folder ${dir}"
+  msg -e "${YELLOW}Sync in folder${RESTORE_COLOUR} \`${dir}\`"
   test -d "${dir}" || known_error "Directory not exist ${dir}!"
   cd "${dir}"
-  test -z "$(git diff)" || known_error "There is not commited changes in \`${dir}\`!"
+  test -z "$(git diff --cached)" && test -z "$(git diff)" || known_error "There is not commited changes in \`${dir}\`!"
+  test -z "$(git clean --dry-run)" || known_error "There is untracked files in \`${dir}\`!"
   git checkout master
   git fetch --all
   git rebase origin/master
@@ -22,9 +32,8 @@ sync_in_folder() {
 
 sync_in_folder_from_var() {
   local var_name="$1"
-  echo "For enviroment: ${var_name}"
+  msg "For enviroment: ${var_name}"
   var_val=$(eval "echo \"\$$var_name\"")
-  echo "var_val: ${var_val}"
   test -n "${var_val}" || known_error "Enviroment variable \`${var_name}\` is not set or empty!"
   sync_in_folder "${var_val}"
 }
@@ -32,3 +41,5 @@ sync_in_folder_from_var() {
 for env_name in config tips PASSWORD_STORE_DIR ; do
   sync_in_folder_from_var "${env_name}"
 done
+
+msg "${GREEN}ok"
