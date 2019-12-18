@@ -19,6 +19,6 @@ export data="${my}"/data
 export music="${data}"/music
 export tips="${my}"/tips
 export PASSWORD_STORE_DIR="${my}"/pass
-PATH="${PATH}:${config}/bin"
+export PATH="${HOME}/bin:${HOME}/.local/bin:${config}/bin:${PATH}"
 
 echo Lol
