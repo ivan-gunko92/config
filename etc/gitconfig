@@ -2,6 +2,10 @@
     email = ivanfakovgun@gmail.com
     name = Ivan Gunko
 [core]
+    editor = vim
+    pager = less
+    # detect whitespace faults and raise errors
+    whitespace = trailing-space,space-before-tab
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
@@ -26,4 +30,19 @@
     rebase-continue = rebase --continue
 [credential]
     helper = store
+[help]
+    autocorrect = 1
+[github]
+    user = ivan-gunko92
+[grep]
+    lineNumber = true
+[color]
+    ui = always
+[tag]
+    sort = version:refname
+[merge]
+    conflictstyle = diff3
 
+[branch]
+	autosetuprebase = always
+	autosetupmerge = always
