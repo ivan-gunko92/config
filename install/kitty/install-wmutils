@@ -1,0 +1,13 @@
+#!/bin/bash
+set -eu -o pipefail
+set -f
+readonly DIR=$(dirname "$0")
+cd "${DIR}"
+#END
+
+git clone https://github.com/wmutils/core wmutils
+cd wmutils/
+sudo apt-get -yq install libx11-dev libxcb1-dev libxcb-util-dev  libxcb-cursor-dev xdotool
+make
+sudo make install
+
