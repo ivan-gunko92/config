@@ -19,9 +19,11 @@ export data="${my}"/data
 export music="${data}"/music
 export tips="${my}"/tips
 export PASSWORD_STORE_DIR="${my}"/pass
+export kittyd="${HOME}/.config/kitty/"
+export passd="${PASSWORD_STORE_DIR}"
 
 export PAGER='less'
-export LESS='--RAW-CONTROL-CHARS --LONG-PROMPT --IGNORE-CASE --no-init --tabs=4'
-export PATH="${HOME}/bin:${HOME}/.local/bin:${config}/bin:${PATH}"
+export LESS='--RAW-CONTROL-CHARS --LONG-PROMPT --IGNORE-CASE --tabs=4'
+export PATH="${config}/bin:${HOME}/bin:${HOME}/.local/bin:${PATH}"
 
 echo Lol
