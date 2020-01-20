@@ -24,9 +24,12 @@
     push-lease = push --force-with-lease
     d = diff --word-diff=color
     d-cached = diff --word-diff=color --cached
+    di = difftool --no-symlinks --dir-diff
+    di-cached = difftool --no-symlinks --dir-diff --cached
     diff-cached = diff --cached
     b = branch --all
     commit-amend = commit --amend
+    commit-amend-no-edit = commit --amend --no-edit
     rebase-continue = rebase --continue
 [credential]
     helper = store
@@ -42,7 +45,17 @@
     sort = version:refname
 [merge]
     conflictstyle = diff3
-
 [branch]
-	autosetuprebase = always
-	autosetupmerge = always
+    autosetuprebase = always
+    autosetupmerge = always
+[diff]
+    tool = kitty
+    guitool = kitty.gui
+[difftool]
+    prompt = false
+    trustExitCode = true
+[difftool "kitty"]
+    cmd = kitty +kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+    cmd = kitty kitty +kitten diff $LOCAL $REMOTE
+
