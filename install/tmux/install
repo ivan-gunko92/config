@@ -5,17 +5,26 @@ readonly DIR=$(dirname "$0")
 cd "${DIR}"
 #END
 
-sudo apt-get install libncurses5-dev libncursesw5-dev libevent-dev bison flex urlview gawk
+ensure_ln () {
+  test -f "$1"
+  ln -fs "$1" "$2"
+}
+
+sudo apt-get install libncurses5-dev libncursesw5-dev libevent-dev bison flex urlview gawk autotools-dev
+sudo apt-get install automake
 CHECKOUT=3.0a
-git clone --branch "${CHECKOUT}" --depth 1 https://github.com/tmux/tmux.git repo
+rm -rf ./repo ; git clone --branch "${CHECKOUT}" --depth 1 https://github.com/tmux/tmux.git repo
 cd repo
 sh autogen.sh
 ./configure && make
 sudo make install
 
-sudo ln -s "${DIR}/bash_completion_tmux.sh" /etc/bash_completion.d/tmux.sh
+cd ..
+
+sudo bash -c "$(declare -f ensure_ln); ensure_ln \"${DIR}/bash_completion_tmux.sh\" /etc/bash_completion.d/tmux.sh"
 
 CHECKOUT=0.9.2
-git clone --branch "${CHECKOUT}" --depth 1 https://github.com/facebook/PathPicker.git path-picker
-ln -s "${DIR}/path-picker/fpp" ../../bin/fpp
+rm -rf ./path-picker ; git clone --branch "${CHECKOUT}" --depth 1 https://github.com/facebook/PathPicker.git path-picker
+
+ensure_ln "${DIR}/path-picker/fpp" ../../bin/fpp
  
