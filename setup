@@ -2,6 +2,7 @@
 
 mkdir -p ~/bin
 
+pip install howdoi
 sudo apt-get update
 sudo apt install -yq wget git curl
 
