@@ -9,7 +9,7 @@ GREEN='\033[00;32m'
 YELLOW='\033[00;33m'
 
 known_error() {
-    echo -e "${RED}$1"
+    echo -e "${RED}$1${RESTORE_COLOUR}"
     exit 133
 }
 
