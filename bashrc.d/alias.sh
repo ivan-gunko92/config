@@ -1,4 +1,3 @@
-alias e=kak
 alias j=jobs
 alias f=fuck
 alias last='echo $?'

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+/home/shaddar/.local/bin/kak "$@"
+

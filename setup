@@ -1,6 +1,10 @@
 #!/bin/bash
 
-mkdir -p ~/bin
+# Creating symlinks to /usr/local/bin
+# (to make bins possible be used from sudo without full path)
+cd bin/usr.local.bin/
+for i in * ; do sudo ln -s $(realpath $i) /usr/local/bin/$i; done
+cd -
 
 pip install howdoi
 sudo apt-get update
