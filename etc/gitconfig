@@ -2,8 +2,8 @@
     email = ivanfakovgun@gmail.com
     name = Ivan Gunko
 [core]
-    editor = vim
-    pager = less
+    editor = e
+    pager = less --no-init
     # detect whitespace faults and raise errors
     whitespace = trailing-space,space-before-tab
 [filter "lfs"]

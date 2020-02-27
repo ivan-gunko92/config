@@ -23,7 +23,7 @@ export kittyd="${HOME}/.config/kitty/"
 export passd="${PASSWORD_STORE_DIR}"
 
 export PAGER='less'
-export LESS='--RAW-CONTROL-CHARS --LONG-PROMPT --IGNORE-CASE --tabs=4'
+export LESS='--RAW-CONTROL-CHARS --LONG-PROMPT --IGNORE-CASE --tabs=2'
 export PATH="${config}/bin:${HOME}/bin:${HOME}/.local/bin:${PATH}"
 
 NC='\e[0m'
