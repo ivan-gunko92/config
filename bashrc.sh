@@ -49,7 +49,8 @@ function ret_code_colored {
         echo -e "${Red}$?${NC}"
     fi
 }
+
 DELIMITER="________________________________________________________________________________"
-PS1="${LightCyan}${DELIMITER}${NC}\n[\`ret_code_colored\`] \w  ${Blue}\u${NC}@${Brown}\h${NC} [jobs: \j]${NC}\n> "
+PS1="${LightCyan}${DELIMITER}${NC}\n[\`ret_code_colored\`] ${Brown} \w  ${Blue}\u${NC}@${LightBlue}\h${NC} [jobs: \j]${NC} ${DarkGray}\t${NC}\n> "
 
 echo Lol
