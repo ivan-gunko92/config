@@ -1,0 +1,20 @@
+#!/bin/bash
+set -eu -o pipefail
+set -f
+#END
+
+printerr () {
+  >&2 echo "${1}"
+}
+
+printr_help () {
+  printerr 'Usage: `pr-latest-modifed {dir-path-for-recurcive-search} {number-of-files-to-print}`'
+}
+
+DIR="${1:-}"
+NUM="${2:-5}"
+
+test -d "${DIR}" || $(printr_help ; exit 130)
+
+find "${DIR}" -type f -print0 | xargs -0 stat --format '%Y :%y %n' | sort -nr | cut -d: -f2- | head -n "${NUM}"
+
