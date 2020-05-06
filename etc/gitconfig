@@ -24,9 +24,8 @@
     push-lease = push --force-with-lease
     d = diff --word-diff=color
     d-cached = diff --word-diff=color --cached
-    di = difftool --no-symlinks --dir-diff
-    di-cached = difftool --no-symlinks --dir-diff --cached
     diff-cached = diff --cached
+    diff-nocolor = diff --color=never
     b = branch --all
     commit-amend = commit --amend
     commit-amend-no-edit = commit --amend --no-edit
