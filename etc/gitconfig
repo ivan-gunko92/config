@@ -30,6 +30,7 @@
     commit-amend = commit --amend
     commit-amend-no-edit = commit --amend --no-edit
     rebase-continue = rebase --continue
+	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 [credential]
     helper = cache
 [help]
